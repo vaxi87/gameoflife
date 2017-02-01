@@ -32,11 +32,22 @@ class ViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(playNext))
         self.view.addGestureRecognizer(tap)
         
-        generateNewWorld()
+        // Glider
+        self.world.getCellFor(x: 4, y: 3)!.state = .Alive
+        self.world.getCellFor(x: 5, y: 4)!.state = .Alive
+        self.world.getCellFor(x: 3, y: 5)!.state = .Alive
+        self.world.getCellFor(x: 4, y: 5)!.state = .Alive
+        self.world.getCellFor(x: 5, y: 5)!.state = .Alive
+        
+        self.gameView = world.getCurrentStateView()
+        self.container.addSubview(gameView)
     }
     
     func generateNewWorld() {
-        for _ in 0...30 {
+        
+        self.world.reset()
+        
+        for _ in 0...50 {
             let x = randLocation(), y = randLocation()
             self.world.getCellFor(x: x, y: y)!.state = .Alive
         }
@@ -53,6 +64,13 @@ class ViewController: UIViewController {
 //        self.world.getCellFor(x: 3, y: 4)!.state = .Alive
 //        self.world.getCellFor(x: 4, y: 4)!.state = .Alive
 //        self.world.getCellFor(x: 5, y: 4)!.state = .Alive
+        
+//         // Glider
+//        self.world.getCellFor(x: 4, y: 3)!.state = .Alive
+//        self.world.getCellFor(x: 5, y: 4)!.state = .Alive
+//        self.world.getCellFor(x: 3, y: 5)!.state = .Alive
+//        self.world.getCellFor(x: 4, y: 5)!.state = .Alive
+//        self.world.getCellFor(x: 5, y: 5)!.state = .Alive
         
         gameView?.removeFromSuperview()
         self.gameView = world.getCurrentStateView()
@@ -93,6 +111,11 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func resetButtonClicked(_ sender: Any) {
+        self.generateNewWorld()
+        isGameOver = false
+        playButton.setTitle("Play", for: .normal)
+    }
 
 
     @IBAction func playPauseButtonClicked(_ sender: Any) {

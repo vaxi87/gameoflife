@@ -31,6 +31,12 @@ class World {
     
     var worldHash: String = ""
     
+    func reset() {
+        self.cells.forEach { (cell) in
+            cell.state = .New
+        }
+    }
+    
     func getCellFor(x xCoord: Int, y yCoord: Int) -> Cell? {
         return cells.filter {
             $0.x == xCoord && $0.y == yCoord
@@ -95,7 +101,7 @@ class World {
         
         let w = Int(UIScreen.main.bounds.size.width)
         
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: w, height: w))
+        let view = UIView(frame: CGRect(x: 5, y: 0, width: w, height: w))
         
         var x = 0, y = 0
         
@@ -113,11 +119,11 @@ class World {
                 
                 switch cell!.state {
                 case .Alive:
-                    miniView.backgroundColor = UIColor.blue
+                    miniView.backgroundColor = UIColor.yellow
                     self.worldHash.append("A")
                     break
                 case .New:
-                    miniView.backgroundColor = UIColor.white
+                    miniView.backgroundColor = UIColor.init(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.3)
                     self.worldHash.append("N")
                     break
                 case .Dead:
