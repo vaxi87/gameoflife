@@ -15,6 +15,7 @@
 		4D66956D1E41D13400774DCE /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D66956C1E41D13400774DCE /* Cell.swift */; };
 		4D6695711E41D30100774DCE /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6695701E41D30100774DCE /* World.swift */; };
 		4D6695731E41D62000774DCE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6695721E41D62000774DCE /* Game.swift */; };
+		4DA6BCBC1E420634004E98A4 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6BCBB1E420634004E98A4 /* EditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4D66956C1E41D13400774DCE /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		4D6695701E41D30100774DCE /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		4D6695721E41D62000774DCE /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		4DA6BCBB1E420634004E98A4 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				4D66956E1E41D14000774DCE /* SupportingFiles */,
 				4D66955C1E41D0B300774DCE /* ViewController.swift */,
+				4DA6BCBB1E420634004E98A4 /* EditorViewController.swift */,
 				4D66955E1E41D0B300774DCE /* Main.storyboard */,
 				4D66956F1E41D23300774DCE /* Model */,
 			);
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D66955D1E41D0B300774DCE /* ViewController.swift in Sources */,
+				4DA6BCBC1E420634004E98A4 /* EditorViewController.swift in Sources */,
 				4D6695731E41D62000774DCE /* Game.swift in Sources */,
 				4D66955B1E41D0B300774DCE /* AppDelegate.swift in Sources */,
 				4D6695711E41D30100774DCE /* World.swift in Sources */,

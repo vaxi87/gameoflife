@@ -13,6 +13,8 @@ class World {
     var cells: [Cell]
     let dimension: Int = 20
     
+    var isInEditMode = false
+    
     init() {
         
         self.cells = []
@@ -131,6 +133,12 @@ class World {
                     break
                 }
                 
+                if isInEditMode {
+                    let tap = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
+                    miniView.addGestureRecognizer(tap)
+                    miniView.tag = self.cells.index{$0 === cell}!
+                }
+                
                 miniView.layer.borderWidth = 1
                 miniView.layer.borderColor = UIColor.lightGray.cgColor
                 
@@ -145,6 +153,23 @@ class World {
         
         return view
         
+    }
+    
+    @objc func tapped(_ sender: UITapGestureRecognizer) {
+        let view = sender.view
+        let tag = view!.tag
+        switch self.cells[tag].state {
+        case .Alive:
+            self.cells[tag].state = .New
+            break
+        case .New:
+            self.cells[tag].state = .Alive
+            break
+        default:
+            break
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name("updateView"), object: nil)
     }
 
 }
