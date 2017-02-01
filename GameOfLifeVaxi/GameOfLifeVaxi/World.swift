@@ -120,7 +120,7 @@ class World {
                     miniView.backgroundColor = UIColor.white
                     self.worldHash.append("N")
                     break
-                case .MarkToDead:
+                case .Dead:
                     self.worldHash.append("D")
                     break
                 }

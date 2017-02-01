@@ -15,6 +15,7 @@ class Game {
     func nextRound() {
         
         var markToDead: [Cell] = []
+        var markToAlive: [Cell] = []
         
         for i in 0..<self.world.dimension {
             
@@ -27,11 +28,15 @@ class Game {
                 }
                 
                 else if isCellWillBeNewBord(cell: cell) {
-                    cell.state = .Alive
+                    markToAlive.append(cell)
                 }
 
             }
             
+        }
+        
+        markToAlive.forEach { (cell) in
+            cell.state = .Alive
         }
         
         markToDead.forEach { (cell) in

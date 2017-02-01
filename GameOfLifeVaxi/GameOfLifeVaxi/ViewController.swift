@@ -36,10 +36,24 @@ class ViewController: UIViewController {
     }
     
     func generateNewWorld() {
-        for _ in 0...16 {
+        for _ in 0...30 {
             let x = randLocation(), y = randLocation()
             self.world.getCellFor(x: x, y: y)!.state = .Alive
         }
+        
+        // Blinker
+//        self.world.getCellFor(x: 3, y: 3)!.state = .Alive
+//        self.world.getCellFor(x: 4, y: 3)!.state = .Alive
+//        self.world.getCellFor(x: 5, y: 3)!.state = .Alive
+        
+        // Toad
+//        self.world.getCellFor(x: 4, y: 3)!.state = .Alive
+//        self.world.getCellFor(x: 5, y: 3)!.state = .Alive
+//        self.world.getCellFor(x: 6, y: 3)!.state = .Alive
+//        self.world.getCellFor(x: 3, y: 4)!.state = .Alive
+//        self.world.getCellFor(x: 4, y: 4)!.state = .Alive
+//        self.world.getCellFor(x: 5, y: 4)!.state = .Alive
+        
         gameView?.removeFromSuperview()
         self.gameView = world.getCurrentStateView()
         self.container.addSubview(gameView)

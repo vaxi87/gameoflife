@@ -9,7 +9,7 @@
 import UIKit
 
 enum State {
-    case Alive, MarkToDead, New
+    case Alive, Dead, New
 }
 
 class Cell {
