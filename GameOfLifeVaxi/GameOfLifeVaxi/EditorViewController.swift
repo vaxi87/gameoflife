@@ -28,13 +28,6 @@ class EditorViewController: UIViewController {
         self.world = game.world
         self.world.isInEditMode = true
         
-        // Glider
-        self.world.getCellFor(x: 4, y: 3)!.state = .Alive
-        self.world.getCellFor(x: 5, y: 4)!.state = .Alive
-        self.world.getCellFor(x: 3, y: 5)!.state = .Alive
-        self.world.getCellFor(x: 4, y: 5)!.state = .Alive
-        self.world.getCellFor(x: 5, y: 5)!.state = .Alive
-        
         self.gameView = world.getCurrentStateView()
         self.container.addSubview(gameView)
         
@@ -72,10 +65,12 @@ class EditorViewController: UIViewController {
     }
     
     func gameover() {
-        if isPlaying {
-            playButton.setTitle("Generate new", for: .normal)
-            timer.invalidate()
+        if self.isPlaying {
+            self.playButton.setTitle("Auto play", for: .normal)
+            self.timer.invalidate()
         }
+        
+        self.isPlaying = false
         
         let alertController = UIAlertController(title: "Game of life", message: "Game over :(", preferredStyle: .alert)
         
@@ -89,30 +84,24 @@ class EditorViewController: UIViewController {
 
     @IBAction func playButtonClicked(_ sender: Any) {
         
-        if isGameOver {
-            isGameOver = false
-            playButton.setTitle("Auto play", for: .normal)
-            return
-        }
-        
-        if isPlaying {
-            playButton.setTitle("Auto play", for: .normal)
-            timer.invalidate()
+        if self.isPlaying {
+            self.playButton.setTitle("Auto play", for: .normal)
+            self.timer.invalidate()
         } else {
-            playButton.setTitle("Pause", for: .normal)
+            self.playButton.setTitle("Pause", for: .normal)
             
-            timer = Timer.init(timeInterval: 0.4, repeats: true, block: { (timer) in
+            self.timer = Timer.init(timeInterval: 0.4, repeats: true, block: { (timer) in
                 DispatchQueue.main.async {
                     self.playNext()
                 }
             })
             
             
-            RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+            RunLoop.main.add(self.timer, forMode: RunLoopMode.commonModes)
             
         }
         
-        isPlaying = !isPlaying
+        self.isPlaying = !self.isPlaying
 
         
     }
